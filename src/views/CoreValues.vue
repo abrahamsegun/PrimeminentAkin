@@ -1,5 +1,5 @@
 <template >
-    <div>
+    <div class="core">
         Core Value
     </div>
     <Footer></Footer>
@@ -12,6 +12,8 @@ export default {
     }
 }
 </script>
-<style >
-    
+<style scoped>
+    .core{
+        height: 100vh;
+    }
 </style>

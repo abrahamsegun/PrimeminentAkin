@@ -1,22 +1,22 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <Aboutone></Aboutone>
   </div>
   <Footer></Footer>
 </template>
 
-<style>
-.about{
-  /* height: 100vh; */
-}
+<style scoped>
+
 
 </style>
 
 <script>
+import Aboutone from '@/components/Aboutone.vue';
 import Footer from '@/components/Footer.vue';
 export default{
 components:{
-  Footer
+    Footer,
+    Aboutone
 }
 }
 </script>

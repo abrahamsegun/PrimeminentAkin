@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import Footer from './components/Footer.vue';
 import { ref } from 'vue';
 const isMenuOpen = ref(false);
 function toggleMenu() {
@@ -19,8 +20,8 @@ function toggleMenu() {
 
       </div>
       <div class="firmname  pt-3">
-        <p class=" text-white font-semibold li tracking-wider lg:text-2xl sm:text-base md:text-lg" >Primeminent Allied</p>
-        <p class=" text-green-950 font-bold tracking-wider lg:text-2xl sm:text-base md:text-lg">Solutions Ltd</p>
+        <p class="t1 text-white font-semibold li tracking-wider lg:text-2xl sm:text-base md:text-lg" >Primeminent Allied</p>
+        <p class="t2 text-green-950 font-bold tracking-wider lg:text-2xl sm:text-base md:text-lg">Solutions Ltd</p>
         </div>
      </div>
      
@@ -28,12 +29,16 @@ function toggleMenu() {
       
 
        <nav>
-    <div class="navbar  flex justify-around gap-12 font-bold tracking-widest text-white lg:justify-between lg:text-lg xl:text-xl xl:2xl xl:justify-between ">
-      <div class="burger-icon md:pl-10 sm:pl-20 " @click="toggleMenu">
-        <font-awesome-icon :icon="'bars'" />
+    <div class="navbar  flex justify-around  font-bold tracking-widest text-white lg:justify-between lg:text-lg xl:text-xl xl:2xl xl:justify-between gap-y-15">
+      <div class="burger-icon md:pl-10 sm:pl-20 "  @click="toggleMenu" v-if="!isMenuOpen">
+        <font-awesome-icon :icon="'bars'" class="fa-2x" />
       </div>
+      <div v-else>
+        <font-awesome-icon :icon="'fa-times'" class="fa-2x" @click="toggleMenu"/>
+      </div>
+  
       <!-- Other navbar content goes here -->
-      <div class="link w-full flex justify-center xl:gap-9 lg:gap-7gap-12 font-bold tracking-widest text-white " >
+      <div class="link w-full flex justify-center xl:gap-9 lg:gap-7 gap-12 font-bold tracking-widest text-white" >
 
           <RouterLink to="/" class=" mr-3 hover:text-gray-400  sm:text-lg md:text-xl md:pl-5 lg:pl-6  lg:text-2xl">Home</RouterLink>
           <RouterLink to="/about" class=" mr-3 hover:text-gray-400  sm:text-lg md:text-xl md:pl-5 lg:pl-6  lg:text-2xl">About</RouterLink>
@@ -47,32 +52,44 @@ function toggleMenu() {
     <!-- Mobile menu goes here -->
     <div v-if="isMenuOpen" class="mobile-menu w-1/2 h-full">
       <!-- Mobile menu content -->
-      <div  class="menudiv flex flex-col w-2/3 mx-auto gap-20 align-middles h-3/4 my-20 ">
-        <RouterLink to="/" class=" mr-3 hover:text-gray-400  sm:text-xl md:text-2xl md:pl-5 lg:pl-8">Home</RouterLink>
-        <RouterLink to="/about" class=" mr-3 hover:text-gray-400  sm:text-xl md:text-2xlpl-3 md:pl-5 lg:pl-8">About</RouterLink>
-        <RouterLink to="/corevalues" class=" mr-3 hover:text-gray-400  sm:text-xl md:text-2xlpl-3 md:pl-5 lg:pl-8">Core Values</RouterLink>
-        <RouterLink to="/contact" class=" mr-3 hover:text-gray-400  sm:text-xl md:text-2xlpl-3 md:pl-5 lg:pl-8">Contact</RouterLink>
+      <div  class="menudiv flex flex-col w-2/3 mx-auto  align-middles h-3/4 gap-12 py-12">
+        <!-- <div class="cancel flex justify-center items-center bg-transparent w-full h-full md:pl-10 sm:pl-20 ">
+          <font-awesome-icon :icon="'fa-times'" @click="toggleMenu"/>
+          
+        </div> -->
+        
+        <RouterLink to="/"   class=" mr-3 hover:text-gray-400  sm:text-2xl md:text-3xl md:pl-5 lg:pl-8 mb-16" @click="toggleMenu">Home</RouterLink>
+        <RouterLink to="/about" class=" mr-3 hover:text-gray-400  sm:text-2xl md:text-3xl  md:pl-5 lg:pl-8 mb-16" @click="toggleMenu">About</RouterLink>
+        <RouterLink to="/corevalues" class=" mr-3 hover:text-gray-400  sm:text-2xl md:text-3xl  md:pl-5 lg:pl-8 mb-16" @click="toggleMenu">Core Values</RouterLink>
+        <RouterLink to="/contact" class=" mr-3 hover:text-gray-400  sm:text-2xlmd:text-3xl  md:pl-5 lg:pl-8 mb-16" @click="toggleMenu">Contact</RouterLink>
 
       </div>
 
       <!-- Add more menu items as needed -->
     </div>
+    <div></div>
   </nav>
     
     </div>
 
     <!-- header end -->
   </div>
-
+   <!-- <Footer></Footer> -->
   <RouterView />
 </template>
 
 <style scoped>
+
+.cancel{
+  height: 12vh;
+  
+}
 .main{
   display: flex;
   align-items: center;
   background-color: #DA1212;
   height: 12vh;
+  width: 100%;
   
 }
 
@@ -81,8 +98,8 @@ function toggleMenu() {
 .mobile-menu {
   position: absolute;
   top:12vh; /* Adjust the top position based on your design */
-  right: 0;
-  width: 40%;
+  left: 0;
+  width: 50%;
   background-color: #DA1212;
   color: #fff;
   display: flex;
@@ -126,7 +143,8 @@ function toggleMenu() {
    height: 12vh;
    width: 100%;
    column-gap: 3rem;
-  padding: 1rem 0;
+  padding: rem 0;
+  padding-left: 2rem;
 }
 .logoinfo{
   display: flex;
@@ -149,7 +167,7 @@ img{
 .mobile-menu {
   position: absolute;
   top:12vh; /* Adjust the top position based on your design */
-  right: 0;
+  left: 0;
   width: 50%;
   background-color: #DA1212;
   color: #fff;
@@ -168,6 +186,16 @@ img{
 
 
 @media only screen and (max-width: 780px) {
+  .main{
+    flex-direction: row-reverse;
+    padding-bottom: 1rem;
+  }
+  /* .t1{
+    font-size: 1.5rem;
+  }
+  .t2{
+    font-size: 1.5rem;
+  } */
   .burger-icon{ display: block;
   cursor: pointer;
 }
@@ -182,8 +210,8 @@ img{
   .mobile-menu {
   position: absolute;
   top:12vh; /* Adjust the top position based on your design */
-  right: 0;
-  width: 40%;
+  left: 0;
+  width: 50%;
   background-color: #DA1212;
   color: #fff;
   display: flex;

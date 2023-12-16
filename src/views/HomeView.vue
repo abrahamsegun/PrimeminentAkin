@@ -3,13 +3,14 @@ import Footer from '@/components/Footer.vue';
 </script>
 
 <template>
-  <main>
+  <main class="home">
     
     
-    <Footer></Footer>
+
   </main>
+  <Footer></Footer>
 </template>
 
-<style>
-
+<style scoped>
+   
 </style>
